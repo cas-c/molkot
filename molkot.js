@@ -1,4 +1,5 @@
 const { AkairoClient } = require('discord-akairo');
+const config = require('./config');
 
 const client = new AkairoClient({
     ownerID: '120358504824307716',
@@ -11,6 +12,6 @@ const client = new AkairoClient({
     listenerDirectory: './src/listeners/'
 });
 
-client.login('MzM2NzQ5Nzk0NDYwNjk2NTgw.DE82Mw.oHDvjmgQomoKndhpVe6m0_yf6Z8').then(() => {
+client.login(config.token).then(() => {
     console.log('Started up!');
 });
