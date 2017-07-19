@@ -1,7 +1,7 @@
 const snekfetch = require('snekfetch');
 const convert = require('xml-js');
 const { RichEmbed } = require('discord.js');
-const blacklist = '+-furry+-bestiality+-micro_bikini';
+const blacklist = require('../../config').blacklist;
 
 module.exports = {
     safeSearch: (tags) => {
