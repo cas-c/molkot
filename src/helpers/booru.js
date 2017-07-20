@@ -7,7 +7,14 @@ module.exports = {
     safeSearch: (tags) => {
         return new Promise((resolve, reject) => {
             snekfetch.get(`https://safebooru.org/index.php?page=dapi&s=post&q=index&tags=${tags}${blacklist}`)
-                .then(res => resolve(convert.xml2json(res.text, { compact: true, spaces: 4 })))
+                .then(res => {
+                    const response = convert.xml2json(res.text, { compact: true, spaces: 4 });
+                    snekfetch.get(`https://safebooru.org/index.php?page=dapi&s=post&q=index&tags=${tags}${blacklist}&pid=${Math.floor(Math.random() * parseInt(JSON.parse(response).posts._attributes.count) / 100)}`)
+                        .then(res2 => {
+                            resolve(convert.xml2json(res2.text, { compact: true, spaces: 4 }));
+                        })
+                        .catch(err => reject(err));
+                })
                 .catch(err => reject(err));
         });
     },
