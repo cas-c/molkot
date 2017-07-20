@@ -29,7 +29,7 @@ module.exports = {
             .setURL(`https://safebooru.org/index.php?page=post&s=view&id=${post.id}`)
             .setImage(`https:${post.sample_url}`)
             .setFooter(`searching for ${message.author.username}`, message.author.avatarURL)
-            .setDescription(post.tags.substr(0,500).replace('_', '\_'))
+            .setDescription(post.tags.replace(/_/g, '\\_'))
             .setColor(8700043));    
     }
 }
