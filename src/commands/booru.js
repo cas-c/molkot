@@ -15,7 +15,7 @@ class Booru extends Command {
 	}
 
 	exec(message, args) {
-        safeSearch(args.query.replace(/+/g,'%2B').replace(/ /g, '+'))
+        safeSearch(args.query.replace(/\+/g,'%2B').replace(/ /g, '+'))
             .then(result => safeResults(result, message), err => {
                 console.log(err);
             });
