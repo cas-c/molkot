@@ -19,7 +19,7 @@ module.exports = {
                 .catch(err => reject(err));
         });
     },
-    safeResults: (result, message) => {
+    safeResults: (result, message, query) => {
         const results = result.response;
         if (results.posts.post === undefined) {
             message.reply(`couldn't find anything, sorry :worried:`);
@@ -36,7 +36,7 @@ module.exports = {
             .setTitle(`view source`)
             .setURL(`https://safebooru.org/index.php?page=post&s=view&id=${post.id}`)
             .setImage(`https:${post.sample_url}`)
-            .setFooter(`searching for ${message.author.username}. ${result.total} total results.`, message.author.avatarURL)
+            .setFooter(`${message.author.username} searching for ${query}. ${result.total} total results.`, message.author.avatarURL)
             .setDescription(post.tags.substr(0, 500).replace(/_/g, '\\_'))
             .setColor(8700043));    
     }
