@@ -19,7 +19,6 @@ class Oops extends Command {
 			const mine = message.channel.messages.filter(m => m.author.id === '336749794460696580');
 			[...mine].slice(-Math.abs(args.count)).forEach(m => m[1].delete());
 		}
-		return message.reply('Cleaned that up for you! Sorry!');
 	}
 }
 
