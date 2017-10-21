@@ -36,7 +36,8 @@ module.exports = {
             .setTitle(`view source`)
             .setURL(`https://safebooru.org/index.php?page=post&s=view&id=${post.id}`)
             .setImage(`https:${post.sample_url}`)
-            .setFooter(`${message.author.username} searching for ${query}. ${result.total} total results.`, message.author.avatarURL)
+            .setFooter(`${message.author.username} searching for ${query}.
+                ${result.total} total results.`, message.author.avatarURL)
             .setDescription(post.tags.substr(0, 500).replace(/_/g, '\\_'))
             .setColor(8700043));    
     }
